@@ -1,0 +1,65 @@
+<meta charset="utf-8" />
+
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <div class="progress">
+        <div class="bar" :style="{'width' : porcentagem }"></div>
+    </div>
+    <div class="percent">{{ porcentagem / 5}}%</div>
+    <button @click="aumenta()">+</button>
+</div>
+ 
+ <script>
+     new Vue({
+         el: "#app",
+         data: {
+            porcentagem: 0
+         },
+
+         methods: {
+           aumenta() {
+               this.porcentagem = 0;
+               x = setInterval(
+                    () => {
+                        if(this.porcentagem<500) {
+                            this.porcentagem += 50
+                        } else {
+                            clearInterval(x)
+                        }
+                    },
+                500
+               ) 
+           }
+         }
+     })
+ </script>
+
+ <style>
+     .progress {
+        width: 500px;
+        height: 10px;
+        border: 1px solid pink;
+        border-radius: 40px;
+        margin: auto;
+     }
+     .bar {
+         height: 100%;
+         width: 100%;
+         background-color: lightpink;
+     }
+     button {
+         display: block;
+         margin: 30px auto;
+         width: 50px;
+         background-color: white;
+         border: 2px solid pink;
+         border-radius: 35px;
+         color: pink;
+         
+     }
+     .percent {
+         margin: auto;
+         width: 20px;
+     }
+ </style>

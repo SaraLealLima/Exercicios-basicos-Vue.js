@@ -1,0 +1,26 @@
+<meta charset="utf-8" />
+
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <p>{{ titulo }}</p>
+    <button v-on:click="saudacao()">Mudar saudação</button>
+    <p><a :href="site">Google</a></p>
+    <p v-html="link"></p>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            titulo: "Good night",
+            site: "http://www.google.com",
+            link: "<a href='http://www.google.com'>Google</a>"
+        },
+        methods: {
+            saudacao() {
+                this.titulo = "Hope you're enjoying"
+            }
+        }
+    })
+</script>

@@ -1,0 +1,25 @@
+<meta charset="utf-8" />
+
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+   <p>{{ titulo }}</p>
+   <input type="text" v-model="titulo" />
+   <input type="checkbox" v-model="muda" @click="mudaTitulo" />
+</div>
+ 
+ <script>
+     new Vue({
+         el: "#app",
+         data: {
+             titulo: "Titulo",
+             muda: "false"
+             
+         },
+         methods: {
+            mudaTitulo() {
+                this.titulo = this.muda ? "Mudou" : "Titulo"
+            }
+         }
+     })
+ </script>

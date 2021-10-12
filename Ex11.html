@@ -1,0 +1,126 @@
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <div class="boxCadastro">
+        <p>Nome: <input type="text" id="txtNome" /> </p> 
+        <p>Cargo: <input type="text" id="txtCargo" /></p>
+        <button @click="cadastrar()">Cadastrar</button>
+
+    </div>
+    <div id="boxProgresso" >
+        <div id="progresso" :style="{'width': pessoasAtivas + '%'}" ></div>
+        <p>{{ pessoasAtivas + '%' }}</p>
+    </div>
+   <h1>Funcionários da Empresa</h1>
+   <div id="boxPessoas">
+        <div class="boxP" v-for="(pessoa, index) in pessoas" :key="index" :class="[{'ativo': pessoa.status}, {'inativo': !pessoa.status}]">
+            <p style="margin: 0px;" class="m0"><b>{{ pessoa.nome }}</b></p>
+            <p style="margin: 0px;" class="m0"> {{ pessoa.cargo }}</p>
+            <hr />
+            <button @click="pessoa.status = !pessoa.status">Muda status</button>
+            
+        </div>
+   </div>
+
+   <pre>{{ pessoas }}</pre>
+   <hr>
+   
+   
+   
+</div>
+
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            pessoas: [
+                {
+                    nome: 'Roberto Kalili',
+                    cargo: 'gerente',
+                    status: false
+                },
+                {
+                    nome: 'Paula Castro',
+                    cargo: 'supervisora',
+                    status: false
+                },
+                {
+                    nome: 'Maria Paula',
+                    cargo: 'encarregada',
+                    status: false
+                },
+                {
+                    nome: 'Carlos Alexandre',
+                    cargo: 'encarregado',
+                    status: false
+                },
+            ]
+        },
+        methods: {
+            cadastrar() {
+                let obj = new Object;
+                obj.nome = document.getElementById("txtNome").value
+                obj.cargo = document.getElementById("txtCargo").value
+                obj.status = true
+                this.pessoas.push(obj)
+                document.getElementById("txtNome") = ""
+                document.getElementById("txtCargo") = ""
+            }
+        },
+        computed: {
+            pessoasAtivas() {
+                let pa = this.pessoas.filter(
+                    mx => mx.status
+                ).length;
+                porc = pa * 100 / this.pessoas.length
+                return porc;
+            }
+        }
+    })
+</script>
+
+<style>
+   #boxPessoas {
+       display: flex;
+       align-items: center;
+   }
+   .boxP {
+       width: 200px;
+       border: 1px #d7d7d7;
+       background-color: f7f7f7;
+       border-radius: 7px;
+       margin: 10px;
+       padding: 10px;
+   }
+   .m0 {
+       margin: 0px;
+   }
+   .ativo {
+       background-color: rgb(255, 202, 219);
+   }
+   .inativo {
+       background-color: rgb(211, 163, 211);
+   }
+   #boxProgresso {
+       width: 75%;
+       height: 15px;
+       border-radius: 10px;
+       border: 1px solid pink;
+       margin: 20px auto;
+       background-color: rgb(211, 163, 211);
+       position: relative;
+       
+   }
+   #progresso {
+       width: 25%;
+       height: 100%;
+       background-color:rgb(255, 202, 219) ;
+   }
+   #boxProgresso p {
+    position: absolute;
+    top: -17px;
+    left: 48%;
+   }
+</style>

@@ -1,0 +1,28 @@
+<meta charset="utf-8" />
+
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+  <p>Meu nome é {{ nome }} e tenho {{ idade }} anos.</p>
+  <hr>
+  <p>{{ idade * 3 }}</p>
+  <hr>
+  <p>{{ aleatorio }}</p>
+  <img :src="imagem" alt="Flores"> 
+
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            nome: "Sara",
+            idade: 22,
+            imagem: "https://findicons.com/files/icons/1243/hello_kitty/128/flowers.png",
+            aleatorio: Math.random(0, 1)
+        },
+        methods: {
+            
+        }
+    })
+</script>

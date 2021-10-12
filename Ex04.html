@@ -1,0 +1,32 @@
+<meta charset="utf-8" />
+
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <div class='box' :class="{purple: colore}" @click="colore = !colore"></div>
+</div>
+ 
+ <script>
+     new Vue({
+         el: "#app",
+         data: {
+            colore: false
+         },
+
+         methods: {
+           
+         }
+     })
+ </script>
+
+ <style>
+     .box {
+         width: 150px;
+         height: 150px;
+         background: pink;
+     }
+
+     .purple {
+         background-color: plum;
+     }
+ </style>

@@ -1,0 +1,46 @@
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+   <h1>Funcionários da Empresa</h1>
+   <div v-for="pessoa in pessoas">
+       <h3 style="margin: 0px;">{{ pessoa.nome }}</h3>
+       <p style="margin: 0px;"> {{ pessoa.cargo }}</p>
+       <hr />
+      
+   </div>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            pessoas: [
+                {
+                    nome: 'Roberto Kalili',
+                    cargo: 'gerente',
+                    status: true
+                },
+                {
+                    nome: 'Paula Castro',
+                    cargo: 'supervisora',
+                    status: true
+                },
+                {
+                    nome: 'Maria Paula',
+                    cargo: 'encarregada',
+                    status: true
+                },
+                {
+                    nome: 'Carlos Alexandre',
+                    cargo: 'encarregado',
+                    status: true
+                },
+            ]
+        }
+    })
+</script>
+
+<style>
+   
+</style>

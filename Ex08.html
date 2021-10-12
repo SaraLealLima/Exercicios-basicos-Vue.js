@@ -1,0 +1,30 @@
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <input type="text" v-model="firstName"  />
+    <input type="text" v-model="lastName"  />
+    <p>{{ fullName }}</p>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            firstName: '',
+            lastName: '',
+        },
+        methods: {
+            
+        },
+        computed: {
+            fullName() {
+                return this.firstName + ' ' + this.lastName
+            }
+        }
+    })
+</script>
+
+<style>
+   
+</style>
